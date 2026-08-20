@@ -177,9 +177,3 @@ func (s *socketCAN) Receive() (Frame, error) {
 		return Frame{}, rerr
 	}
 }
-
-// Helpers for FD sets since x/sys is not allowed.
-func fdSetAdd(set *syscall.FdSet, fd int) {
-	set.Bits[fd/64] |= int64(1) << (uint(fd) % 64)
-}
-
